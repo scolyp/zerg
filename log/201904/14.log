@@ -1,0 +1,45 @@
+---------------------------------------------------------------
+[ 2019-04-14T17:56:42+08:00 ] 127.0.0.1 GET /banner/w?age=ying
+[ info ] localhost/banner/w?age=ying [运行时间：0.034957s][吞吐率：28.61req/s] [内存消耗：910.02kb] [文件加载：51]
+[ info ] [ LANG ] E:\workspace\zerg\thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'Banner/:id',
+  'route' => 'api/v1.Banner/getBanner',
+  'option' => 
+  array (
+  ),
+  'var' => 
+  array (
+    'id' => 'w',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=454632448',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'keep-alive',
+  'host' => 'localhost',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'age' => 'ying',
+  'id' => 'w',
+)
+[ info ] [ LOG ] INIT File
+[ error ] [400][E:\workspace\zerg\application\api\validate\BaseValidate.php:24]
+---------------------------------------------------------------
+[ 2019-04-14T19:14:46+08:00 ] 127.0.0.1 GET /banner/w?age=ying
+[ info ] localhost/banner/w?age=ying [运行时间：0.044457s][吞吐率：22.49req/s] [内存消耗：913.73kb] [文件加载：51]
+[ error ] [0]致命错误: Wrong parameters for think\Exception([string $message [, long $code [, Throwable $previous = NULL]]])[E:\workspace\zerg\application\api\validate\BaseValidate.php:29]
+[ error ] Fatal error: Wrong parameters for think\Exception([string $message [, long $code [, Throwable $previous = NULL]]])
+---------------------------------------------------------------
+[ 2019-04-14T19:15:47+08:00 ] 127.0.0.1 GET /banner/w?age=ying
+[ info ] localhost/banner/w?age=ying [运行时间：0.039500s][吞吐率：25.32req/s] [内存消耗：913.73kb] [文件加载：51]
+[ error ] [0]致命错误: Wrong parameters for think\Exception([string $message [, long $code [, Throwable $previous = NULL]]])[E:\workspace\zerg\application\api\validate\BaseValidate.php:29]
+[ error ] Fatal error: Wrong parameters for think\Exception([string $message [, long $code [, Throwable $previous = NULL]]])
