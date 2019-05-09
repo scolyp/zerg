@@ -1,0 +1,8 @@
+---------------------------------------------------------------
+[ 2019-05-09T18:20:15+08:00 ] 127.0.0.1 GET /banner/1
+[ info ] z.cn/banner/1 [运行时间：0.073000s][吞吐率：13.70req/s] [内存消耗：1,987.55kb] [文件加载：70]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000857s ] mysql:host=127.0.0.1;port=3306;dbname=zerg;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `banner` [ RunTime:0.008363s ]
+[ sql ] [ SQL ] SELECT * FROM `banner` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `banner_item` [ RunTime:0.007201s ]
+[ sql ] [ SQL ] SELECT * FROM `banner_item` WHERE  `banner_id` = 1 [ RunTime:0.000418s ]

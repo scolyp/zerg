@@ -17,16 +17,11 @@ class BaseValidate extends Validate
     public function goCheck(){
         $params = Request::param();
         $result = $this->batch()->check($params);
-//        dump($params);
-
         if(!$result){
             $error = $this->error;
-//            throw new ParameterException([
-//                'msg' => $error
-//            ]);
-//            throw Exception('suowu ');
-//            return $error;
-            throw new Exception('123');
+            throw new ParameterException([
+                'msg' => $error
+            ]);
         }else{
             return true;
         }

@@ -13,22 +13,14 @@ use think\Exception;
 class Banner
 {
     public function getBanner($id){
-        $data = [
-            'id' => $id,
-            'age' => 18
-        ];
         (new \app\api\validate\Banner())->goCheck();
-        $model = new BannerModel();
-//        $result = $model->getBannerInfo($id);
-//        halt(1);
-
-//        if(!$result){
-//
-//            throw new Exception();
-//        }
-//        return $result;
-//        if ($result){
-//            dump($validate->getError());
+        $result = BannerModel::getBannerInfo($id);
+        if(!$result){
+            throw new BannerMissException();
+        }
+        return $result;
+//        if (!$result){
+//            throw new Exception('文件无法找到');
 //        }
 
     }

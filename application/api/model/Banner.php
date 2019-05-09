@@ -9,9 +9,16 @@
 namespace app\api\model;
 
 
-class Banner
+use think\Model;
+
+class Banner extends Model
 {
-    public function getBannerInfo($id){
-        return 1/0;
+    public function items(){
+        return $this->hasMany('BannerItem','banner_id','id');
+    }
+    public static function getBannerInfo($id){
+
+        $banner = self::with('items')->find($id);
+        return $banner;
     }
 }

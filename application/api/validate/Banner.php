@@ -12,11 +12,10 @@ use think\Validate;
 class Banner extends BaseValidate
 {
     protected $rule = [
-        'id' => ['require','max' => 2,'number','isZNumber'],
+        'id' => ['require','number','isZNumber'],
         'age' => 'number'
     ];
     protected function isZNumber($value,$rule = '',$data = ''){
-//        halt($value);
         if(is_int($value + 0) && is_int($value + 0) > 0){
             return true;
         }else{
