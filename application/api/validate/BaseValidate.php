@@ -26,4 +26,12 @@ class BaseValidate extends Validate
             return true;
         }
     }
+
+    protected function isPositiveInteger($value, $rule='', $data = [], $field = ''){
+        if(is_int($value + 0) && is_int($value + 0) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

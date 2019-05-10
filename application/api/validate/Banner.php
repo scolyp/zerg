@@ -13,14 +13,16 @@ class Banner extends BaseValidate
 {
     protected $rule = [
         'id' => ['require','number','isZNumber'],
-        'age' => 'number'
     ];
-    protected function isZNumber($value,$rule = '',$data = ''){
-        if(is_int($value + 0) && is_int($value + 0) > 0){
-            return true;
-        }else{
-            return $value.'不是一个整数';
+    protected $message = [
+        'id.isZNumber' => 'ID必须为正整数',
+        'id.number' => 'ID必须为纯数字',
+    ];
+    protected function isZNumber($value){
+        if(!$this->isPositiveInteger($value)){
+            return false;
         }
+        return true;
     }
 
 }

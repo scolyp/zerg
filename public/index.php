@@ -11,7 +11,6 @@
 
 // [ 应用入口文件 ]
 namespace think;
-use \think\Log;
 // 加载基础文件
 require __DIR__ . '/../thinkphp/base.php';
 define('LOG_PATH',__DIR__.'/../log/');
