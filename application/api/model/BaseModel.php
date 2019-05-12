@@ -13,6 +13,7 @@ use think\Model;
 
 class BaseModel extends Model
 {
+    //组合新的图片url
     protected function prefixImgUrl($value,$data){
         $finalUrl = $value;
         if($data['from'] == 1){

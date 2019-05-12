@@ -8,6 +8,7 @@
 
 namespace app\api\controller\v1;
 
+use app\api\validate\IDMustBePositiveInt;
 use app\api\validate\Theme as ThemeValidate;
 use app\api\model\Theme as ThemeModel;
 use app\lib\Exception\BannerMissException;
@@ -22,11 +23,23 @@ class Theme
      * */
     public function getSimpleList($ids=''){
         (new ThemeValidate())->goCheck($ids);
-        $model = new ThemeModel;
-        $result = $model::with('topicImg,headImg')->select($ids);
-//        halt(count($result));
-
-        if(count($result) ==0){
+        $result = ThemeModel::with('topicImg,headImg')->select($ids);
+        if($result->isEmpty()){
+            throw new ThemeException();
+        }
+        return $result;
+    }
+    /**
+     *  获取单个主题下的商品信息
+     * @Url /theme/:id http://z.cn/api/v1/theme/1
+     * @Http GET
+     * @id theme_product表ID
+     * @return 一组product模型商品
+     * */
+    public function getComplexOne($id){
+        (new IDMustBePositiveInt())->goCheck();
+        $result = ThemeModel::getThemeWithProducts($id);
+        if($result->isEmpty()){
             throw new ThemeException();
         }
         return $result;

@@ -13,12 +13,13 @@ Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
 
-Route::get('hello/:name', 'index/hello');
-
 Route::get('api/:version/banner/:id','api/:version.Banner/getBanner');
 
 Route::get('api/:version/theme','api/:version.Theme/getSimpleList');
 
+Route::get('api/:version/theme/:id','api/:version.Theme/getComplexOne');
+Route::get('api/:version/product/recent','api/:version.Product/getRecent');
+Route::get('api/:version/category','api/:version.Category/getAllCategories');
 return [
 
 ];
