@@ -17,6 +17,7 @@ class Product extends BaseModel
     public function img(){
         return $this->belongsTo('Image','img_id','id');
     }
+
     public function getMainImgUrlAttr($value,$data){
         return $this->prefixImgUrl($value,$data);
     }
@@ -26,5 +27,9 @@ class Product extends BaseModel
             ->order('create_time','desc')
             ->select();
         return $products;
+    }
+
+    public static function getProductByCategoryID($id){
+        return self::where('category_id','=',$id)->select();
     }
 }

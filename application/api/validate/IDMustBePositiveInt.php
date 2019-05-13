@@ -12,7 +12,7 @@ namespace app\api\validate;
 class IDMustBePositiveInt extends BaseValidate
 {
     protected $rule = [
-        'id' => ['require','isPositiveInteger']
+        'id' => ['isPositiveInteger']
     ];
     protected $message = [
         'id.isPositiveInteger' => 'id参数必须为整数',
