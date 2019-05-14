@@ -12,6 +12,7 @@ use app\api\model\Product as ProductModel;
 use app\api\validate\IDMustBePositiveInt;
 use app\lib\Exception\CategoryException;
 use app\lib\Exception\ProductException;
+use app\api\validate\Banner;
 
 class Product
 {
@@ -47,5 +48,10 @@ class Product
         }
         $result = $result->hidden(['summary']);
         return $result;
+    }
+
+    public function getOne($id){
+        (new Banner())->goCheck();
+
     }
 }
