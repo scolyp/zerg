@@ -42,4 +42,18 @@ class BaseValidate extends Validate
             return true;
         }
     }
+
+    public function getDataByRule($data){
+        //校验客户端用户是否传入额外的参数
+        if(array_key_exists('uid',$data) || array_key_exists('user_id',$data)){
+            throw new ParameterException([
+                'msg' => '参数中含有非法的参数名user_id或uid'
+            ]);
+        }
+        $newArray = [];
+        foreach($this->rule as $key=>$value){
+            $newArray[$key] = $data[$key];
+        }
+        return $newArray;
+    }
 }

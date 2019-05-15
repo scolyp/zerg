@@ -18,6 +18,15 @@ class Product extends BaseModel
         return $this->belongsTo('Image','img_id','id');
     }
 
+    public function images(){
+        return $this->hasMany('ProductImage','product_id','id');
+    }
+
+    public function property(){
+        return $this->hasMany('ProductProperty','product_id','id');
+    }
+
+
     public function getMainImgUrlAttr($value,$data){
         return $this->prefixImgUrl($value,$data);
     }
@@ -33,4 +42,16 @@ class Product extends BaseModel
         return self::where('category_id','=',$id)->select();
     }
 
+    public static function getProductDetail($id){
+        $result = self::with([
+            'images' => function($query){
+                $query->with(['imgUrl'])
+                    ->order('order','asc');
+            }
+        ])
+            ->with(['property'])
+            ->find($id);
+
+        return $result;
+    }
 }

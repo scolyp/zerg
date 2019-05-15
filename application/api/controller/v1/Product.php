@@ -38,7 +38,7 @@ class Product
      * @Url /by_category?id=id1 http://z.cn/api/v1/product/by_category?id=1
      * @Http GET
      * @id 分类id
-     * @return Product模型
+     * @return 一组Product模型
      * */
     public function getAllInCategory($id = 3){
         (new IDMustBePositiveInt())->goCheck();
@@ -50,8 +50,19 @@ class Product
         return $result;
     }
 
+    /**
+     * 通过商品ID获取商品详情信息
+     * @Url /product/:id http://z.cn/api/v1/product/11
+     * @Http GET
+     * @id 商品ID
+     * @return 一个商品详情模型
+     * */
     public function getOne($id){
         (new Banner())->goCheck();
-
+        $product = ProductModel::getProductDetail($id);
+        if(!$product){
+            throw new ProductException();
+        }
+        return $product;
     }
 }
