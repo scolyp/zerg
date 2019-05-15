@@ -13,6 +13,8 @@ use app\api\model\User;
 use app\api\model\UserAddress;
 use app\api\validate\AddressValidate;
 use app\api\service\Token;
+use app\lib\enum\ScopeEnum;
+use app\lib\Exception\ForbiddenException;
 use app\lib\Exception\SuccessMessage;
 use app\lib\Exception\UserException;
 use think\Controller;
@@ -24,8 +26,12 @@ class Address extends Controller
     ];
     protected function checkScope(){
         //根据Token取出Scope权限作用域
-        //判断缓存是否过期
-        return true;
+        $scope = Token::getCurrentTokenVar('scope');
+        if($scope >= ScopeEnum::User){
+            return true;
+        }else{
+            throw new ForbiddenException();
+        }
     }
 
     public function createOrUpdateAddress(){

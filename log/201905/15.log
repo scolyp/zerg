@@ -1,0 +1,13 @@
+---------------------------------------------------------------
+[ 2019-05-15T22:44:01+08:00 ] 127.0.0.1 POST /api/v1/token/user?XDEBUG_SESSION_START=12698
+[ info ] z.cn/api/v1/token/user?XDEBUG_SESSION_START=12698 [运行时间：1.991902s][吞吐率：0.50req/s] [内存消耗：1,895.38kb] [文件加载：74]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.137068s ] mysql:host=127.0.0.1;port=3306;dbname=zerg;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `user` [ RunTime:0.301462s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `openid` = 'o3wYp441F6UkZOh24vMGqmTekafk' LIMIT 1 [ RunTime:0.029364s ]
+[ sql ] [ SQL ] INSERT INTO `user` (`openid` , `create_time` , `update_time`) VALUES ('o3wYp441F6UkZOh24vMGqmTekafk' , 1557931441 , 1557931441) [ RunTime:0.030046s ]
+---------------------------------------------------------------
+[ 2019-05-15T22:44:16+08:00 ] 127.0.0.1 POST /api/v1/token/user?XDEBUG_SESSION_START=12698
+[ info ] z.cn/api/v1/token/user?XDEBUG_SESSION_START=12698 [运行时间：0.288634s][吞吐率：3.46req/s] [内存消耗：1,930.34kb] [文件加载：74]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001449s ] mysql:host=127.0.0.1;port=3306;dbname=zerg;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `user` [ RunTime:0.011183s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `openid` = 'o3wYp441F6UkZOh24vMGqmTekafk' LIMIT 1 [ RunTime:0.000707s ]
