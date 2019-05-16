@@ -12,8 +12,4 @@ namespace app\api\model;
 class UserAddress extends BaseModel
 {
 
-    public static function getOneUserAddress($uid){
-        $address = self::where('user_id','=',$uid)->find();
-        return $address;
-    }
 }

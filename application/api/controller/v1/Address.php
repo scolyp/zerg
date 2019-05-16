@@ -10,30 +10,29 @@ namespace app\api\controller\v1;
 
 
 use app\api\model\User;
-use app\api\model\UserAddress;
 use app\api\validate\AddressValidate;
 use app\api\service\Token;
-use app\lib\enum\ScopeEnum;
-use app\lib\Exception\ForbiddenException;
 use app\lib\Exception\SuccessMessage;
 use app\lib\Exception\UserException;
-use think\Controller;
 
-class Address extends Controller
+class Address extends BaseController
 {
     protected $beforeActionList = [
-        'checkScope' => ['only' => 'createOrUpdateAddress']
+        'checkPrimaryScope' => ['only' => 'createOrUpdateAddress']
     ];
-    protected function checkScope(){
-        //根据Token取出Scope权限作用域
-        $scope = Token::getCurrentTokenVar('scope');
-        if($scope >= ScopeEnum::User){
-            return true;
-        }else{
-            throw new ForbiddenException();
-        }
-    }
 
+    /**
+     * 新增地址或更新地址
+     * @Url /address http://z.cn/api/v1/address
+     * @Http POST
+     * @throws
+     * @return true
+     * @note token参数放于Headers中
+     * row
+     * {
+        "name":"zyr","mobile":"18960923220","province":"江西省","city":"抚州市","country":"广昌县","detail":"旴江镇..."
+        }
+     * */
     public function createOrUpdateAddress(){
         $validate = new AddressValidate();
         $validate->goCheck();

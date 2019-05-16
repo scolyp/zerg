@@ -20,6 +20,17 @@ class Banner
      * @return 返回一条banner模型对象
      * */
     public function getBanner($id){
+        $data = [
+            'products' => [
+                'productID' => 1,
+                'count' => 2
+            ],
+            [
+                'productID' => 2,
+                'count' => 3
+            ]
+        ];
+        halt(json_encode($data));
         (new \app\api\validate\Banner())->goCheck();
         $result = BannerModel::getBannerInfo($id);
         if(!$result){

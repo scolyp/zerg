@@ -9,6 +9,8 @@
 namespace app\api\service;
 
 
+use app\lib\enum\ScopeEnum;
+use app\lib\Exception\ForbiddenException;
 use app\lib\Exception\TokenException;
 use think\facade\Cache;
 use think\Exception;
@@ -16,6 +18,7 @@ use think\facade\Request;
 
 class Token
 {
+    //生成Token
     public static function generateToken(){
         //用三组字符串，进行MD5加密
         //32个字符组成一组随机字符串
@@ -28,6 +31,7 @@ class Token
         return md5($randChars.$timesTamp.$salt);
     }
 
+    //通用方法 根据参数获取缓存对应值
     public static function getCurrentTokenVar($key){
         $token = Request::header('Token');
         $cache = Cache::get($token);
@@ -44,8 +48,29 @@ class Token
         }
     }
 
+    //获取当前缓存Uid
     public static function getCurrentUid(){
         $uid = self::getCurrentTokenVar('uid');
         return $uid;
+    }
+
+    //用户与管理员，带有效的Token与scope才可访问接口。
+    public static function needPrimaryScope(){
+        $scope = self::getCurrentTokenVar('scope');
+        if($scope >= ScopeEnum::User){
+            return true;
+        }else{
+            throw new ForbiddenException();
+        }
+    }
+
+    //排除管理员,只限定用户访问接口
+    public static function needExclusiveScope(){
+        $scope = self::getCurrentTokenVar('scope');
+        if($scope == ScopeEnum::User){
+            return true;
+        }else{
+            throw new ForbiddenException();
+        }
     }
 }

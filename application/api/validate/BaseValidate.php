@@ -14,6 +14,7 @@ use think\Exception;
 
 class BaseValidate extends Validate
 {
+    //参数拦截进行验证
     public function goCheck(){
         $params = Request::param();
         $result = $this->batch()->check($params);
@@ -27,6 +28,7 @@ class BaseValidate extends Validate
         }
     }
 
+    //参数必须为纯数字、正整数
     protected function isPositiveInteger($value, $rule='', $data = [], $field = ''){
         if(is_int($value + 0) && is_int($value + 0) > 0){
             return true;
@@ -34,7 +36,7 @@ class BaseValidate extends Validate
             return false;
         }
     }
-
+    //参数不能为空
     protected function isNotEmpty($value,$rule='',$data=[],$field=''){
         if(empty($value)){
             return false;
@@ -43,6 +45,7 @@ class BaseValidate extends Validate
         }
     }
 
+    //校验客户端传递的数据，返回只取自定义写好Validate中的rule的字段
     public function getDataByRule($data){
         //校验客户端用户是否传入额外的参数
         if(array_key_exists('uid',$data) || array_key_exists('user_id',$data)){

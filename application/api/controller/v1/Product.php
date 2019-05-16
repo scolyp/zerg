@@ -21,6 +21,7 @@ class Product
      * @Url /recent?count?=1 http://z.cn/api/v1/product/recent?count=10
      * @Http GET
      * @count 获取商品条数
+     * @throws
      * @return Product一组模型
      * */
     public function getRecent($count = 15){
@@ -38,6 +39,7 @@ class Product
      * @Url /by_category?id=id1 http://z.cn/api/v1/product/by_category?id=1
      * @Http GET
      * @id 分类id
+     * @throws
      * @return 一组Product模型
      * */
     public function getAllInCategory($id = 3){
@@ -55,6 +57,7 @@ class Product
      * @Url /product/:id http://z.cn/api/v1/product/11
      * @Http GET
      * @id 商品ID
+     * @throws
      * @return 一个商品详情模型
      * */
     public function getOne($id){
